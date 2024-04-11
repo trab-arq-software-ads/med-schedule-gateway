@@ -1,18 +1,10 @@
-const Client = require("./ClientMaker");
+const path = require("path");
+const { createClient } = require("./grpcClient");
 
-const client = new Client(
-  "../proto/Patients.proto",
-  "gateway.doctors.DoctorsController",
-  "127.0.0.1:50051",
-  {
-    keepCase: true,
-    longs: String,
-    enums: String,
-    defaults: false,
-    arrays: false,
-    objects: false,
-    oneofs: false,
-  }
+const doctors = createClient(
+  path.resolve(__dirname, "../../proto/Doctors.proto"),
+  "DoctorService",
+  "localhost:50051"
 );
 
-module.exports = client;
+module.exports = doctors;
