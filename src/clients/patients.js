@@ -1,10 +1,10 @@
 const path = require("path");
-const { createClient } = require("./grpcClient");
+const { createClient } = require("./grpcClientExpress");
 
-const patients = createClient(
+const patientsClient = createClient(
   path.resolve(__dirname, "../../proto/Patients.proto"),
   "PatientService",
   "localhost:50052"
 );
 
-module.exports = patients;
+module.exports = patientsClient;

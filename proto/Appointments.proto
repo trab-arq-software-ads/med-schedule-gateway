@@ -1,0 +1,59 @@
+syntax = "proto3";
+
+package settings.appointments;
+
+import "google/protobuf/empty.proto";
+
+service AppointmentController {
+    rpc Create(AppointmentRequest) returns (AppointmentResponse) {}
+    rpc Destroy(AppointmentDestroyRequest) returns (google.protobuf.Empty) {}
+    rpc List(AppointmentListRequest) returns (AppointmentListResponse) {}
+    rpc PartialUpdate(AppointmentPartialUpdateRequest) returns (AppointmentResponse) {}
+    rpc Retrieve(AppointmentRetrieveRequest) returns (AppointmentResponse) {}
+    rpc Update(AppointmentRequest) returns (AppointmentResponse) {}
+}
+
+message AppointmentDestroyRequest {
+    int32 id = 1;
+}
+
+message AppointmentListRequest {
+}
+
+message AppointmentListResponse {
+    repeated AppointmentResponse results = 1;
+    int32 count = 2;
+}
+
+message AppointmentPartialUpdateRequest {
+    int32 id = 1;
+    int32 doctor_id = 2;
+    int32 patient_id = 3;
+    string date = 4;
+    string symptoms = 5;
+    string diagnosis = 6;
+    repeated string _partial_update_fields = 7;
+}
+
+message AppointmentRequest {
+    int32 id = 1;
+    int32 doctor_id = 2;
+    int32 patient_id = 3;
+    string date = 4;
+    string symptoms = 5;
+    string diagnosis = 6;
+}
+
+message AppointmentResponse {
+    int32 id = 1;
+    int32 doctor_id = 2;
+    int32 patient_id = 3;
+    string date = 4;
+    string symptoms = 5;
+    string diagnosis = 6;
+}
+
+message AppointmentRetrieveRequest {
+    int32 id = 1;
+}
+
