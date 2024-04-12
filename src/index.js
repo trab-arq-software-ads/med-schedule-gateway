@@ -14,6 +14,6 @@ app.use(appointmentsRouter);
 app.use(doctorsRouter);
 app.use(patientsRouter);
 
-app.listen(3000, function () {
-  console.log("Controller Service running on port 3000");
+app.listen(3001, function () {
+  console.log("Controller Service running on port 3001");
 });
